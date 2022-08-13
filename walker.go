@@ -52,6 +52,10 @@ func (w *walker) walk(modified, current reflect.Value, pointer JSONPointer) erro
 		if modified.Int() != current.Int() {
 			w.replace(pointer, modified.Int(), current.Int())
 		}
+	case reflect.Float32, reflect.Float64:
+		if modified.Float() != current.Float() {
+			w.replace(pointer, modified.Float(), current.Float())
+		}
 	case reflect.Uint, reflect.Uintptr, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		if modified.Uint() != current.Uint() {
 			w.replace(pointer, modified.Uint(), current.Uint())
